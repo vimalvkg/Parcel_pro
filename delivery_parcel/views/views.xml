@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+     <record id="view_delivery_carrier_form_with_provider_parrcel" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.provider.parcel</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='destination']" position='before'>
+                <page string="Parcel Configuration" attrs="{'invisible': [('delivery_type', '!=', 'parcel')]}">
+                    <group>
+                        <group>
+                            <field name="parcel_username" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                            <field name="parcel_passwd" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                            <field name="parcel_access_number" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                            <!--1<field name="ups_access_number" attrs="{'required': [('delivery_type', '=', 'ups')]}"/>
+                            <field name="ups_default_service_type" attrs="{'required': [('delivery_type', '=', 'ups')]}"/> -->
+                        </group>
+                        <group>
+                          <!--<field name="ups_default_packaging_id" attrs="{'required': [('delivery_type', '=', 'ups')]}" domain="[('package_carrier_type', '=', 'ups')]"/>-->
+                            <field name="parcel_package_weight_unit" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                            <field name="parcel_package_dimension_unit" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                           <field name="parcel_label_file_type" attrs="{'required': [('delivery_type', '=', 'parcel')]}"/>
+                        </group>
+                        <group string="Value Added Services" name="ups_vas">
+                            <!-- <field name="ups_bill_my_account" attrs="{'invisible': [('delivery_type', '!=', 'ups')]}"/>
+                            <field name="ups_saturday_delivery" string="Saturday Delivery" attrs="{'required': [('delivery_type', '=', 'ups')], 'invisible': [('ups_default_service_type', 'in', ['03','11','13','59','12','65','08'])]}"/>
+                            <field name="ups_cod" attrs="{'required': [('delivery_type', '=', 'ups')], 'invisible': [('ups_default_service_type', '=', '96')]}"/>
+                            <field name="ups_cod_funds_code" attrs="{'required': [('delivery_type', '=', 'ups')], 'invisible': [('ups_cod', '=', False)]}" widget="radio"/> -->
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="delivery_parcel.list">
+      <field name="name">delivery_parcel list</field>
+      <field name="model">delivery_parcel.delivery_parcel</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="delivery_parcel.action_window">
+      <field name="name">delivery_parcel window</field>
+      <field name="res_model">delivery_parcel.delivery_parcel</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="delivery_parcel.action_server">
+      <field name="name">delivery_parcel server</field>
+      <field name="model_id" ref="model_delivery_parcel_delivery_parcel"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="delivery_parcel" id="delivery_parcel.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="delivery_parcel.menu_1" parent="delivery_parcel.menu_root"/>
+    <menuitem name="Menu 2" id="delivery_parcel.menu_2" parent="delivery_parcel.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="delivery_parcel.menu_1_list" parent="delivery_parcel.menu_1"
+              action="delivery_parcel.action_window"/>
+    <menuitem name="Server to list" id="delivery_parcel" parent="delivery_parcel.menu_2"
+              action="delivery_parcel.action_server"/>
+    -->
+  </data>
+</odoo>

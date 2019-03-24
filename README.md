@@ -1,2 +1,2 @@
-# Parcel_pro
+# UPS Parcel Pro
 Create Parcel pro connector
